@@ -16,7 +16,7 @@ dotnet user-secrets init
 Lo siguiente es introducir el connection string con el siguiente comando:
 
 ```bash
-dotnet user-secrets set ConnectionStrings:vacunas "server=localhost;uid=root;pwd=tupassword;database=vacunas"
+dotnet user-secrets set ConnectionStrings:vacunas "server=localhost;uid=root;pwd=1234;database=vacunas"
 ```
 En la parte de "uid" y "pwd", deben reemplazarlo con su respectivo usuario y contraseña de MYSQL, ya deben saber acerca de hacer como es el asunto del connection string.
 
