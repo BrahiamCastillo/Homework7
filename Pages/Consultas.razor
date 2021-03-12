@@ -1,2 +1,47 @@
 @page "/cons"
 
+<h3>Consulta de  vacunados</h3>
+<hr />
+
+<div class="container">
+    <form class="form">
+        <div class="form-group">
+            <label>Cedula</label>
+            <input class="form-control"   @bind="Cedula" placeholder="Cedula" />
+        </div>
+         <button @onclick="obetnetDatos" class="btn btn-outline-success">Consultar</button>
+    </form>
+    <table class="table">
+        <thead class="thead-info">
+            <tr>Nombre</tr>
+            <tr>Apellido</tr>
+            
+        </thead>
+        <tbody>
+            @using (var db = new Models.vacunasContext())
+            {
+                @foreach (var item in db.Auditorias.ToList())
+                {
+                    <tr>
+                        <td>@item.Personas.Nombre</td>
+                        <td>@item.Personas.Apellido</td>
+                        <td>@item.Vacunas.Marca</td>
+                        
+                        
+                    </tr>
+                }
+            }
+        </tbody>
+       
+    </table>
+</div>        
+
+@code{
+    String Cedula = "";
+
+    void obetnetDatos(){
+        
+    }
+
+
+}

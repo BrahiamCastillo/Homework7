@@ -75,13 +75,18 @@
     void guardardatos(){
         
         var db = new Models.vacunasContext();
-        var p = new Models.Personas();
-        p.Nombre = Nombre;
-        p.Apellido = Apellido;
-        p.Cedula = Cedula;
-        p.FechaNacimiento = Fecha;
+        var p = new Models.Auditorias();
+        string url = "https://api.adamix.net/apec/cedula/"+ Cedula;
+        System.Net.WebClient to = new System.Net.WebClient();
+        string data = to.DownloadString(url);
+        var rs = Newtonsoft.Json.JsonConvert.DeserializeObject<DatosAPI>(data);
+        p.Personas.Nombre = rs.Nombres;
+        p.Personas.Apellido = rs.Apellido1 + ' '+rs.Apellido2;
+        p.Personas.Cedula = Cedula;
+        p.Personas.FechaNacimiento = Fecha;
         db.Add(p);
         db.SaveChanges();
+        
 
 
 

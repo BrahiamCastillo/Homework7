@@ -45,55 +45,101 @@
         }
       },
       {
-        "HashCode": -159022920,
+        "HashCode": -2135465436,
         "Kind": "Components.Component",
-        "Name": "Homework7.Shared.SurveyPrompt",
+        "Name": "Homework7.Pages.Counter",
         "AssemblyName": "Homework7",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "Counter"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Shared.SurveyPrompt"
+          "Common.TypeName": "Homework7.Pages.Counter"
         }
       },
       {
-        "HashCode": 75773367,
+        "HashCode": 1642382061,
         "Kind": "Components.Component",
-        "Name": "Homework7.Shared.SurveyPrompt",
+        "Name": "Homework7.Pages.Counter",
         "AssemblyName": "Homework7",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Homework7.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "Homework7.Pages.Counter"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Shared.SurveyPrompt",
+          "Common.TypeName": "Homework7.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -337972299,
+        "Kind": "Components.Component",
+        "Name": "Homework7.Pages.Index",
+        "AssemblyName": "Homework7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Homework7.Pages.Index"
+        }
+      },
+      {
+        "HashCode": -396066820,
+        "Kind": "Components.Component",
+        "Name": "Homework7.Pages.Index",
+        "AssemblyName": "Homework7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Homework7.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Homework7.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1825727290,
+        "Kind": "Components.Component",
+        "Name": "Homework7.Pages.Registrar",
+        "AssemblyName": "Homework7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Registrar"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Homework7.Pages.Registrar"
+        }
+      },
+      {
+        "HashCode": 1799538085,
+        "Kind": "Components.Component",
+        "Name": "Homework7.Pages.Registrar",
+        "AssemblyName": "Homework7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Homework7.Pages.Registrar"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Homework7.Pages.Registrar",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -227,134 +273,55 @@
         }
       },
       {
-        "HashCode": -337972299,
+        "HashCode": -159022920,
         "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Index",
+        "Name": "Homework7.Shared.SurveyPrompt",
         "AssemblyName": "Homework7",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Index"
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Index"
+          "Common.TypeName": "Homework7.Shared.SurveyPrompt"
         }
       },
       {
-        "HashCode": -396066820,
+        "HashCode": 75773367,
         "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Index",
+        "Name": "Homework7.Shared.SurveyPrompt",
         "AssemblyName": "Homework7",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Homework7.Pages.Index"
+            "TagName": "Homework7.Shared.SurveyPrompt"
           }
         ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -2135465436,
-        "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Counter",
-        "AssemblyName": "Homework7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
+        "BoundAttributes": [
           {
-            "TagName": "Counter"
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": 1642382061,
-        "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Counter",
-        "AssemblyName": "Homework7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Homework7.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1186522709,
-        "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Consultas",
-        "AssemblyName": "Homework7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Consultas"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Consultas"
-        }
-      },
-      {
-        "HashCode": 1474515034,
-        "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Consultas",
-        "AssemblyName": "Homework7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Homework7.Pages.Consultas"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Consultas",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1825727290,
-        "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Registrar",
-        "AssemblyName": "Homework7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Registrar"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Registrar"
-        }
-      },
-      {
-        "HashCode": 1799538085,
-        "Kind": "Components.Component",
-        "Name": "Homework7.Pages.Registrar",
-        "AssemblyName": "Homework7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Homework7.Pages.Registrar"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Homework7.Pages.Registrar",
+          "Common.TypeName": "Homework7.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
