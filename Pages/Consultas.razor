@@ -1,46 +1,99 @@
 @page "/cons"
+@using Homework7.Models;
+@using System.Linq;
+@using System.Collections.Generic;
 
-<h3>Consulta de  vacunados</h3>
+<h3>Consulta de vacunados</h3>
 <hr />
 
 <div class="container">
     <form class="form">
         <div class="form-group">
             <label>Cedula</label>
-            <input class="form-control"   @bind="Cedula" placeholder="Cedula" />
+            <input class="form-control" @bind="Cedula" placeholder="Cedula" />
         </div>
-         <button @onclick="obetnetDatos" class="btn btn-outline-success">Consultar</button>
+        <button @onclick="obtenerDatos" class="btn btn-outline-success">Consultar</button>
     </form>
-    <table class="table">
-        <thead class="thead-info">
-            <tr>Nombre</tr>
-            <tr>Apellido</tr>
-            
-        </thead>
-        <tbody>
-            @using (var db = new Models.vacunasContext())
-            {
-                @foreach (var item in db.Auditorias.ToList())
+    @if (Consulta.Count > 0)
+    {
+
+        <table class="table">
+            <thead class="thead-info">
+                <tr>Nombre</tr>
+                <tr>Apellido</tr>
+                <tr>Vacuna</tr>
+                <tr>Dosis</tr>
+            </thead>
+            <tbody>
+                @foreach (var cst in Consulta)
                 {
                     <tr>
-                        <td>@item.Personas.Nombre</td>
-                        <td>@item.Personas.Apellido</td>
-                        <td>@item.Vacunas.Marca</td>
-                        
-                        
+                        <td>@cst.Nombre</td>
+                        <td>@cst.Apellido</td>
+                        <td>@cst.Vacuna</td>
+                        <td>@cst.Dosis</td>
                     </tr>
                 }
-            }
-        </tbody>
-       
-    </table>
-</div>        
+            </tbody>
+        </table>
+    } else {
+
+        <h2>Sin registros</h2>
+    }
+   
+</div>
 
 @code{
     String Cedula = "";
 
-    void obetnetDatos(){
-        
+    private class Consult
+    {
+        public string Nombre { get; set; }
+
+        public string Apellido { get; set; }
+
+        public string Vacuna { get; set; }
+
+        public int Dosis { get; set; }
+
+
+    }
+    List<Consult> Consulta = new List<Consult>();
+
+    vacunasContext ctx = new vacunasContext();
+
+    List<Vacunas> foundVaccine(int idVaccine)
+    {
+
+        return ctx.Vacunas.Where(w => w.Id == idVaccine).ToList();
+    }
+
+    void obtenerDatos()
+    {
+
+        List<Auditorias> Audit() => new vacunasContext().Auditorias.Where(w => w.Personas.Cedula == Cedula).ToList();
+
+        int count = Audit().Select(std => std.VacunasId).Distinct().Count();
+
+        List<int> vac = Audit().Select(std => std.VacunasId).Distinct().ToList();
+
+        foreach (var rep in vac)
+        {
+            string nombre = "";
+            Audit().ForEach(p => nombre = p.Personas.Nombre);
+            string apellido = "";
+            Audit().ForEach(p => nombre = p.Personas.Apellido);
+            var vaccine = foundVaccine(rep);
+            string vacuna = "";
+            vaccine.ForEach(p => vacuna = p.Marca);
+            Consulta.Add(new Consult
+            {
+                Nombre = nombre,
+                Apellido = apellido,
+                Vacuna = vacuna,
+                Dosis = 2
+            });
+        }
     }
 
 
