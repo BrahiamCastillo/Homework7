@@ -1,0 +1,207 @@
+@page "/zodiaco"
+@using Microsoft.EntityFrameworkCore;
+@inject DbContextOptions<vacunasContext> options
+
+
+<h1>Vacunados según el signo del zodiaco.</h1>
+
+@if (Zodiac.Count > 0)
+{
+    <table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>Signo</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var zoc in Zodiac)
+            {
+
+                <tr>
+                    <td>@zoc.Key</td>
+                    <td>@zoc.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>No hay personas registradas.</h2>
+}
+
+@code {
+    List<Personas> People() => new vacunasContext(options).Personas.ToList();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await chargeTable();
+    }
+
+    string zodiacSign(DateTime date)
+    {
+
+        string sign = "";
+
+        if (date.Month > 2 && date.Day > 20 || date.Month < 5 && date.Day < 21)
+        {
+
+            sign = "Aries";
+        }
+        else if (date.Month > 3 && date.Day > 20 || date.Month < 6 && date.Day < 21)
+        {
+
+            sign = "Tauro";
+        }
+        else if (date.Month > 4 && date.Day > 20 || date.Month < 7 && date.Day < 21)
+        {
+
+            sign = "Geminis";
+        }
+        else if (date.Month > 5 && date.Day > 20 || date.Month < 8 && date.Day < 21)
+        {
+
+            sign = "Cancer";
+        }
+        else if (date.Month > 6 && date.Day > 20 || date.Month < 9 && date.Day < 22)
+        {
+
+            sign = "Leo";
+        }
+        else if (date.Month > 7 && date.Day > 21 || date.Month < 10 && date.Day < 23)
+        {
+
+            sign = "Virgo";
+        }
+        else if (date.Month > 8 && date.Day > 22 || date.Month < 11 && date.Day < 23)
+        {
+
+            sign = "Libra";
+        }
+        else if (date.Month > 9 && date.Day > 22 || date.Month < 12 && date.Day < 23)
+        {
+
+            sign = "Escorpio";
+        }
+        else if (date.Month > 10 && date.Day > 22 || date.Month < 13 && date.Day < 21)
+        {
+
+            sign = "Sagitario";
+        }
+        else if (date.Month == 12 && date.Day > 20 || date.Month < 2 && date.Day < 20)
+        {
+
+            sign = "Capricornio";
+        }
+        else if (date.Month > 0 && date.Day > 19 || date.Month < 3 && date.Day < 19)
+        {
+
+            sign = "Acuario";
+        }
+        else
+        {
+
+            sign = "Piscis";
+        }
+
+        return sign;
+    }
+
+    Dictionary<string, int> Zodiac = new Dictionary<string, int>();
+
+    async Task chargeTable()
+    {
+        int aries = 0;
+        int tauro = 0;
+        int geminis = 0;
+        int cancer = 0;
+        int leo = 0;
+        int virgo = 0;
+        int libra = 0;
+        int escorpio = 0;
+        int sagitario = 0;
+        int capricornio = 0;
+        int acuario = 0;
+        int piscis = 0;
+
+        foreach (var person in People())
+        {
+
+            if (zodiacSign(person.FechaNacimiento) == "Aries")
+            {
+
+                aries++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Tauro")
+            {
+
+                tauro++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Geminis")
+            {
+
+                geminis++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Cancer")
+            {
+
+                cancer++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Leo")
+            {
+
+                leo++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Virgo")
+            {
+
+                virgo++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Libra")
+            {
+
+                libra++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Escorpio")
+            {
+
+                escorpio++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Sagitario")
+            {
+
+                sagitario++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Capricornio")
+            {
+
+                capricornio++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Acuario")
+            {
+
+                acuario++;
+            }
+            else if (zodiacSign(person.FechaNacimiento) == "Piscis")
+            {
+                piscis++;
+            }
+        }
+        Zodiac.Add("Aries", aries);
+        Zodiac.Add("Tauro", tauro);
+        Zodiac.Add("Geminis", geminis);
+        Zodiac.Add("Cancer", cancer);
+        Zodiac.Add("Leo", leo);
+        Zodiac.Add("Virgo", virgo);
+        Zodiac.Add("Libra", libra);
+        Zodiac.Add("Escorpio", escorpio);
+        Zodiac.Add("Sagitario", sagitario);
+        Zodiac.Add("Capricornio", capricornio);
+        Zodiac.Add("Acuario", acuario);
+        Zodiac.Add("Piscis", piscis);
+    }
+
+}

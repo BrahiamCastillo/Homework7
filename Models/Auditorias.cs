@@ -9,6 +9,7 @@ namespace Homework7.Models
 {
     public partial class Auditorias
     {
+        public int Id { get; set; }
         public int PersonasId { get; set; }
         public int VacunasId { get; set; }
         public int ProvinciasId { get; set; }

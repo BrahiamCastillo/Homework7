@@ -65,6 +65,8 @@ namespace Homework7.Migrations
                 name: "auditorias",
                 columns: table => new
                 {
+                    id = table.Column<int>(type: "int(11)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     personas_id = table.Column<int>(type: "int(11)", nullable: false),
                     vacunas_id = table.Column<int>(type: "int(11)", nullable: false),
                     provincias_id = table.Column<int>(type: "int(11)", nullable: false),
@@ -72,8 +74,7 @@ namespace Homework7.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PRIMARY", x => new { x.personas_id, x.vacunas_id, x.provincias_id })
-                        .Annotation("MySql:IndexPrefixLength", new[] { 0, 0, 0 });
+                    table.PrimaryKey("PRIMARY", x => x.id);
                     table.ForeignKey(
                         name: "fk_auditorias_personas",
                         column: x => x.personas_id,

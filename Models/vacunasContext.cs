@@ -25,14 +25,6 @@ namespace Homework7.Models
         public virtual DbSet<Provincias> Provincias { get; set; }
         public virtual DbSet<Vacunas> Vacunas { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseMySql("name=ConnectionStrings:vacunas", x => x.ServerVersion("8.0.17-mysql"));
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Auditorias>(entity =>
@@ -63,11 +55,11 @@ namespace Homework7.Models
 
                 entity.Property(e => e.FechaVacunacion)
                     .HasColumnName("fecha_vacunacion")
-                    .HasDefaultValueSql("'2021-03-05 18:45:23.539625'");
+                    .HasDefaultValueSql("'2021-03-09 19:57:43.656962'");
 
                 entity.Property(e => e.FechaVacunaproxima)
                     .HasColumnName("fecha_vacunaproxima")
-                    .HasDefaultValueSql("'2021-06-05 00:00:00.000000'");
+                    .HasDefaultValueSql("'2021-06-09 00:00:00.000000'");
 
                 entity.Property(e => e.NumeroDosis)
                     .HasColumnName("numero_dosis")
@@ -186,30 +178,6 @@ namespace Homework7.Models
             });
 
             OnModelCreatingPartial(modelBuilder);
-
-            // Seeder Vacuna, default data
-
-            modelBuilder.Entity<Vacunas>().
-            HasData(
-                new Vacunas
-                {
-                    Id = 1,
-                    Marca = "Covid19",
-                    Cantidad = 10
-                },
-                new Vacunas
-                {
-                    Id = 2,
-                    Marca = "Lepra",
-                    Cantidad = 15
-                },
-                new Vacunas
-                {
-                    Id = 3,
-                    Marca = "AH1N1",
-                    Cantidad = 6
-                }
-            );
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

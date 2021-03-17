@@ -111,6 +111,39 @@
         }
       },
       {
+        "HashCode": -1780613482,
+        "Kind": "Components.Component",
+        "Name": "Homework7.Pages.Zodiaco",
+        "AssemblyName": "Homework7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zodiaco"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Homework7.Pages.Zodiaco"
+        }
+      },
+      {
+        "HashCode": -1668746957,
+        "Kind": "Components.Component",
+        "Name": "Homework7.Pages.Zodiaco",
+        "AssemblyName": "Homework7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Homework7.Pages.Zodiaco"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Homework7.Pages.Zodiaco",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1559203151,
         "Kind": "Components.Component",
         "Name": "Homework7.Shared.MainLayout",
@@ -14672,6 +14705,11 @@
   },
   "RootNamespace": "Homework7",
   "Documents": [
+    {
+      "FilePath": "/home/brahiam/ProgIII/Homework7/Pages/Zodiaco.razor",
+      "TargetPath": "Pages\\Zodiaco.razor",
+      "FileKind": "component"
+    },
     {
       "FilePath": "/home/brahiam/ProgIII/Homework7/Pages/Counter.razor",
       "TargetPath": "Pages\\Counter.razor",
