@@ -10,16 +10,8 @@
 
     @foreach(Provincias prov in Provinces()) {
 
-        @if(regulator == false) {
-
-            <EjsRadioButton @ref="radiobtn" Name="provinces" Value="@prov.Id.ToString()">@prov.NombreProvincia</EjsRadioButton>
-            <hr>
-        } else {
-
-            <EjsRadioButton Label="@prov.NombreProvincia" Name="provinces" Value="@prov.Id.ToString()" Checked="true"></EjsRadioButton>
-            <hr>
-        }
-
+        <EjsRadioButton @ref="radiobtn" Name="provinces" Value="@prov.Id.ToString()" Checked=true>@prov.NombreProvincia</EjsRadioButton>         
+        <hr>
 }
 
 <button @onclick="getSelectedValue" class="btn btn-dark">Obtener registros</button>
