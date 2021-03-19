@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Homework7.Models;
+using Syncfusion.EJ2.Blazor;
 
 namespace Homework7
 {
@@ -31,6 +32,9 @@ namespace Homework7
             services.AddServerSideBlazor();
             services.AddControllers();
             services.AddControllersWithViews();
+            services.AddSyncfusionBlazor();
+            services.AddAntiforgery();
+            services.AddDataProtection();
             services.AddDbContext<vacunasContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("vacunas")));
         }
@@ -38,6 +42,9 @@ namespace Homework7
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Register Syncfusion license
+	        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDE0NDY1QDMxMzgyZTM0MmUzMEovaDFZeWhXSGFscjczdVFjWUNEQUlJVjhDUUdGMStHNzgwSlYyNngvTFk9");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

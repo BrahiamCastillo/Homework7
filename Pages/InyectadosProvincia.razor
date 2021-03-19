@@ -1,0 +1,95 @@
+@page "/inyectadosprovincia"
+@using Microsoft.EntityFrameworkCore
+@using Syncfusion.EJ2.Blazor.Buttons
+@using System.Linq;
+@inject DbContextOptions<vacunasContext> options
+
+<h1>Vacunados por provincia.</h1>
+<hr>
+@if(Provinces().Count > 0) {
+
+    @foreach(Provincias prov in Provinces()) {
+
+        @if(regulator == false) {
+
+            <EjsRadioButton @ref="radiobtn" Name="provinces" Value="@prov.Id.ToString()">@prov.NombreProvincia</EjsRadioButton>
+            <hr>
+        } else {
+
+            <EjsRadioButton Label="@prov.NombreProvincia" Name="provinces" Value="@prov.Id.ToString()" Checked="true"></EjsRadioButton>
+            <hr>
+        }
+
+}
+
+<button @onclick="getSelectedValue" class="btn btn-dark">Obtener registros</button>
+
+} else {
+
+    <h2>No hay provincias registradas.</h2>
+}
+
+@if(activate == true) {
+
+    @if(VaccinesPeople.Count > 0) {
+       <hr>
+       <hr>
+       <table class="table table-dark table-hover">
+       <thead>
+           <tr>
+               <th>Cedula</th>
+               <th>Nombre</th>
+               <th>Apellido</th>
+               <th>Fecha de primera vacuna</th>
+               <th>Fecha de segunda vacuna</th>
+           </tr>
+       </thead>
+       <tbody>
+
+        @foreach (var vac in VaccinesPeople)
+        {
+            <tr>
+                <td>@vac.Personas.Cedula</td>
+                <td>@vac.Personas.Nombre</td>
+                <td>@vac.Personas.Apellido</td>
+                <td>@vac.FechaVacunacion</td>
+                <td>@vac.FechaVacunaproxima</td>
+            </tr>
+        }
+        </tbody>
+        </table>
+    }   
+    else 
+    {
+
+       <h2>No hay vacunados para esta provincia.</h2>
+    }
+}
+
+
+@code {
+
+    bool regulator = false;
+
+    bool activate = false;
+    string value;
+
+    int val;
+
+    List<Provincias> Provinces() => new vacunasContext(options).Provincias.ToList();
+
+    EjsRadioButton radiobtn;  
+
+    List<Auditorias> VaccinesPeople = null;
+     public async void getSelectedValue() 
+    { 
+        value = await radiobtn.GetSelectedValue();
+
+        val = Convert.ToInt32(value);
+
+        VaccinesPeople = new vacunasContext(options).Auditorias.
+        Where(w => w.ProvinciasId == val).OrderBy(o => o.PersonasId).ToList();
+
+        activate = true; 
+    } 
+}
