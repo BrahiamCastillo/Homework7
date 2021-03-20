@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("4dfbad65-1ded-4846-9bbf-39dbb754ccd4")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("7270a9e4-3adf-4ce3-bd8c-9fb353d2ae01")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Homework7")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

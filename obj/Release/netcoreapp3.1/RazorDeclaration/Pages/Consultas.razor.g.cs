@@ -7,7 +7,7 @@
 namespace Homework7.Pages
 {
     #line hidden
-    using System.Collections.Generic;
+    using System;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
@@ -74,28 +74,28 @@ using Homework7.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\felix\Desktop\Homework7\Pages\Registrar.razor"
-using System;
+#line 2 "C:\Users\felix\Desktop\Homework7\Pages\Consultas.razor"
+using Homework7.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\felix\Desktop\Homework7\Pages\Registrar.razor"
+#line 3 "C:\Users\felix\Desktop\Homework7\Pages\Consultas.razor"
 using System.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\felix\Desktop\Homework7\Pages\Registrar.razor"
-using Homework7.Models;
+#line 4 "C:\Users\felix\Desktop\Homework7\Pages\Consultas.razor"
+using System.Collections.Generic;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/regis")]
-    public partial class Registrar : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/cons")]
+    public partial class Consultas : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -103,18 +103,60 @@ using Homework7.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 65 "C:\Users\felix\Desktop\Homework7\Pages\Registrar.razor"
-       
-    string Nombre = "";
-    string Apellido = "";
-    string Telefono = "";
-    DateTime Fecha;
-    string Cedula = "";
+#line 46 "C:\Users\felix\Desktop\Homework7\Pages\Consultas.razor"
+      
+    String Cedula = "";
 
-    string Vacuna = "";
-    string Provincia = "";
+    private class Consult
+    {
+        public string Nombre { get; set; }
 
-   
+        public string Apellido { get; set; }
+
+        public string Vacuna { get; set; }
+
+        public int Dosis { get; set; }
+
+
+    }
+    List<Consult> Consulta = new List<Consult>();
+
+    vacunasContext ctx = new vacunasContext();
+
+    List<Vacunas> foundVaccine(int idVaccine)
+    {
+
+        return ctx.Vacunas.Where(w => w.Id == idVaccine).ToList();
+    }
+
+    void obtenerDatos()
+    {
+
+        List<Auditorias> Audit() => new vacunasContext().Auditorias.Where(w => w.Personas.Cedula == Cedula).ToList();
+
+        int count = Audit().Select(std => std.VacunasId).Distinct().Count();
+
+        List<int> vac = Audit().Select(std => std.VacunasId).Distinct().ToList();
+
+        foreach (var rep in vac)
+        {
+            string nombre = "";
+            Audit().ForEach(p => nombre = p.Personas.Nombre);
+            string apellido = "";
+            Audit().ForEach(p => nombre = p.Personas.Apellido);
+            var vaccine = foundVaccine(rep);
+            string vacuna = "";
+            vaccine.ForEach(p => vacuna = p.Marca);
+            Consulta.Add(new Consult
+            {
+                Nombre = nombre,
+                Apellido = apellido,
+                Vacuna = vacuna,
+                Dosis = 2
+            });
+        }
+    }
+
 
 
 #line default
