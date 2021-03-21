@@ -6079,24 +6079,26 @@
     ]
   },
   "packageFolders": {
-    "/home/brahiam/.nuget/packages/": {}
+    "C:\\Users\\Latitude\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/brahiam/ProgIII/Homework7/Homework7.csproj",
+      "projectUniqueName": "C:\\Users\\Latitude\\Desktop\\Homework7\\Homework7.csproj",
       "projectName": "Homework7",
-      "projectPath": "/home/brahiam/ProgIII/Homework7/Homework7.csproj",
-      "packagesPath": "/home/brahiam/.nuget/packages/",
-      "outputPath": "/home/brahiam/ProgIII/Homework7/obj/",
+      "projectPath": "C:\\Users\\Latitude\\Desktop\\Homework7\\Homework7.csproj",
+      "packagesPath": "C:\\Users\\Latitude\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Latitude\\Desktop\\Homework7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/brahiam/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Latitude\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6158,7 +6160,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.404/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
       }
     }
   }

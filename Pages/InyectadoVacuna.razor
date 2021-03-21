@@ -1,0 +1,87 @@
+@page "/inyectadosVacuna"
+@using Microsoft.EntityFrameworkCore
+@using Syncfusion.EJ2.Blazor.Buttons
+@using System.Linq;
+@inject DbContextOptions<vacunasContext> options
+
+<h1>Vacunados por marca.</h1>
+<hr>
+@if(vaccines().Count > 0) {
+
+    @foreach(Vacunas vac in vaccines()) {
+
+        <EjsRadioButton @ref="radiobtn" Name="vaccines" Value="@vac.Id.ToString()" Checked=true>@vac.Marca</EjsRadioButton>         
+        <hr>
+}
+
+<button @onclick="getSelectedValue" class="btn btn-dark">Obtener registros</button>
+
+} else {
+
+    <h2>No hay vacunados registrados.</h2>
+}
+
+@if(activate == true) {
+
+    @if(VaccinesPeople.Count > 0) {
+       <hr>
+       <hr>
+       <table class="table table-dark table-hover">
+       <thead>
+           <tr>
+               <th>marca</th>
+               <th>Nombre</th>
+               <th>Apellido</th>
+               <th>Fecha de primera vacuna</th>
+               <th>Fecha de segunda vacuna</th>
+           </tr>
+       </thead>
+       <tbody>
+
+        @foreach (var vac in VaccinesPeople)
+        {
+            <tr>
+                <td>@vac.Vacunas.Marca</td>
+                <td>@vac.Personas.Nombre</td>
+                <td>@vac.Personas.Apellido</td>
+                <td>@vac.FechaVacunacion</td>
+                <td>@vac.FechaVacunaproxima</td>
+            </tr>
+        }
+        </tbody>
+        </table>
+    }   
+    else 
+    {
+
+       <h2>No hay vacunados para esta provincia.</h2>
+    }
+}
+
+
+@code {
+
+    bool regulator = false;
+
+    bool activate = false;
+    string value;
+
+    int val;
+
+    List<Vacunas> vaccines() => new vacunasContext(options).Vacunas.ToList();
+
+    EjsRadioButton radiobtn;  
+
+    List<Auditorias> VaccinesPeople = null;
+     public async void getSelectedValue() 
+    { 
+        value = await radiobtn.GetSelectedValue();
+
+        val = Convert.ToInt32(value);
+
+        VaccinesPeople = new vacunasContext(options).Auditorias.
+        Where(w => w.VacunasId == val).OrderBy(o => o.PersonasId).ToList();
+
+        activate = true; 
+    } 
+}

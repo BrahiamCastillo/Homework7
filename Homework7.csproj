@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>e40e62af-cb8c-4fb4-869e-e6119ed2fbfe</UserSecretsId>
+    <UserSecretsId>a77c1444-6596-4717-a7db-e8d9efef415f</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.12" />
