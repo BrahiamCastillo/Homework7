@@ -2,6 +2,25 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "BlazorLeaflet/0.4.0-alpha": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.0.0-rc1.19457.4",
+          "Microsoft.AspNetCore.Components.Web": "3.0.0-rc1.19457.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/BlazorLeaflet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BlazorLeaflet.dll": {}
+        },
+        "build": {
+          "buildTransitive/BlazorLeaflet.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/BlazorLeaflet.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/3.1.2": {
         "type": "package",
         "dependencies": {
@@ -1687,6 +1706,23 @@
     }
   },
   "libraries": {
+    "BlazorLeaflet/0.4.0-alpha": {
+      "sha512": "zwx7kvkfkiW8JyDGojOpZqRsV6UB2SXH4yEiO/EeZgkzy+AP7fLRCe445P8nNwukAFnVG8HEZzNn50Wf3S6Gpg==",
+      "type": "package",
+      "path": "blazorleaflet/0.4.0-alpha",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazorleaflet.0.4.0-alpha.nupkg.sha512",
+        "blazorleaflet.nuspec",
+        "build/BlazorLeaflet.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/BlazorLeaflet.props",
+        "buildTransitive/BlazorLeaflet.props",
+        "lib/netstandard2.0/BlazorLeaflet.dll",
+        "staticwebassets/leafletBlazorInterops.js"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/3.1.2": {
       "sha512": "bbu9qMsOdmNjLLaRawhT3OfjFHleK9D2ICGfmjvkMVNyfx42P5NgypOlqKgK6SDoqtex3DisWd4E3nePtohPCw==",
       "type": "package",
@@ -6070,6 +6106,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "BlazorLeaflet >= 0.4.0-alpha",
       "Microsoft.EntityFrameworkCore.Relational >= 3.1.12",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.12",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.12",
@@ -6079,26 +6116,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Latitude\\.nuget\\packages\\": {}
+    "/home/brahiam/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Latitude\\Desktop\\Homework7\\Homework7.csproj",
+      "projectUniqueName": "/home/brahiam/ProgIII/Homework7/Homework7.csproj",
       "projectName": "Homework7",
-      "projectPath": "C:\\Users\\Latitude\\Desktop\\Homework7\\Homework7.csproj",
-      "packagesPath": "C:\\Users\\Latitude\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Latitude\\Desktop\\Homework7\\obj\\",
+      "projectPath": "/home/brahiam/ProgIII/Homework7/Homework7.csproj",
+      "packagesPath": "/home/brahiam/.nuget/packages/",
+      "outputPath": "/home/brahiam/ProgIII/Homework7/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Latitude\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/brahiam/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6115,6 +6150,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "BlazorLeaflet": {
+            "target": "Package",
+            "version": "[0.4.0-alpha, )"
+          },
           "Microsoft.EntityFrameworkCore.Relational": {
             "target": "Package",
             "version": "[3.1.12, )"
@@ -6160,7 +6199,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.404/RuntimeIdentifierGraph.json"
       }
     }
   }

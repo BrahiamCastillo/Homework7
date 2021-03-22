@@ -1,7 +1,8 @@
 @page "/inyectadosVacuna"
 @using Microsoft.EntityFrameworkCore
 @using Syncfusion.EJ2.Blazor.Buttons
-@using System.Linq;
+@using Syncfusion.EJ2.Blazor.Maps
+@using System.Linq
 @inject DbContextOptions<vacunasContext> options
 
 <h1>Vacunados por marca.</h1>
@@ -9,7 +10,7 @@
 @if(vaccines().Count > 0) {
 
     @foreach(Vacunas vac in vaccines()) {
-
+        
         <EjsRadioButton @ref="radiobtn" Name="vaccines" Value="@vac.Id.ToString()" Checked=true>@vac.Marca</EjsRadioButton>         
         <hr>
 }
@@ -18,7 +19,7 @@
 
 } else {
 
-    <h2>No hay vacunados registrados.</h2>
+    <h2>No hay vacunas registrados.</h2>
 }
 
 @if(activate == true) {
@@ -50,13 +51,28 @@
         }
         </tbody>
         </table>
-    }   
+    }  
     else 
     {
 
-       <h2>No hay vacunados para esta provincia.</h2>
+       <h2>No hay vacunados con esta marca.</h2>
     }
 }
+<EjsMaps>
+    <MapsLayers>
+        <MapsLayer ShapeData="MapShapeData" DataSource="provinces"
+        ShapePropertyPath='@("name")' ShapeDataPath="NombreProvincia">
+        <MapsDataLabelSettings Visible="true" LabelPath="NombreProvincia">
+        </MapsDataLabelSettings>
+        <MapsShapeSettings Autofill="true"></MapsShapeSettings>
+        <MapsMarkerSettings>
+            <MapsMarker Visible='true' DataSource='MarkerDataSource' ShapeValuePath="Triangle" ColorValuePath="blue">
+            </MapsMarker>
+        </MapsMarkerSettings>
+    </MapsLayer>
+</MapsLayers>
+</EjsMaps>
+
 
 
 @code {
@@ -70,9 +86,16 @@
 
     List<Vacunas> vaccines() => new vacunasContext(options).Vacunas.ToList();
 
+    List<Provincias> provinces = null;
+
     EjsRadioButton radiobtn;  
 
     List<Auditorias> VaccinesPeople = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        provinces = new vacunasContext(options).Provincias.ToList();
+    }
      public async void getSelectedValue() 
     { 
         value = await radiobtn.GetSelectedValue();
@@ -84,4 +107,34 @@
 
         activate = true; 
     } 
+
+    /// Mapa
+
+    public class MapDataSettings
+    {
+        public Boolean async { get; set; }
+        public String dataOptions { get; set; }
+        public String type { get; set; }
+    }
+    public MapDataSettings MapShapeData = new MapDataSettings
+    {
+        async = true,
+        type = "GET",
+        dataOptions = "scripts/MapsData/map.json"
+    };
+
+   public class MapMarkerDataSource
+{
+    public double latitude { get; set; }
+    public double longitude { get; set; }
+    public string name { get; set; }
+    public string color { get; set; }
+    public string shape { get; set; }
+};
+
+/// Hace un foreach para cargar los datos desde vaccinePeople
+public List<MapMarkerDataSource> MarkerDataSource = new List<MapMarkerDataSource> {
+    new MapMarkerDataSource{ latitude= 19.20561, longitude= -69.33685, name= "Samana", color="red", shape="Triangle" }
+};
+
 }
