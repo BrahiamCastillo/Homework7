@@ -35,13 +35,16 @@ namespace Homework7.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("fecha_vacunacion")
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("'2021-03-05 18:45:23.539625'");
+                        .HasDefaultValueSql("'2021-03-09 19:57:43.656962'");
 
                     b.Property<DateTime>("FechaVacunaproxima")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("fecha_vacunaproxima")
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("'2021-06-05 00:00:00.000000'");
+                        .HasDefaultValueSql("'2021-06-09 00:00:00.000000'");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<int>("NumeroDosis")
                         .HasColumnName("numero_dosis")
@@ -160,26 +163,6 @@ namespace Homework7.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("vacunas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Cantidad = 10,
-                            Marca = "Covid19"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Cantidad = 15,
-                            Marca = "Lepra"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Cantidad = 6,
-                            Marca = "AH1N1"
-                        });
                 });
 
             modelBuilder.Entity("Homework7.Models.Auditorias", b =>
