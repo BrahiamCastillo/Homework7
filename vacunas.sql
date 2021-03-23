@@ -27,11 +27,12 @@ CREATE TABLE `vacunas` (
 );
 
 CREATE TABLE `auditorias` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
     `personas_id` int(11) NOT NULL,
     `vacunas_id` int(11) NOT NULL,
     `provincias_id` int(11) NOT NULL,
     `numero_dosis` int(11) NOT NULL,
-    CONSTRAINT `PRIMARY` PRIMARY KEY (`personas_id`, `vacunas_id`, `provincias_id`),
+    CONSTRAINT `PRIMARY` PRIMARY KEY (`id`),
     CONSTRAINT `fk_auditorias_personas` FOREIGN KEY (`personas_id`) REFERENCES `personas` (`id`) ON DELETE RESTRICT,
     CONSTRAINT `fk_auditorias_provincias1` FOREIGN KEY (`provincias_id`) REFERENCES `provincias` (`id`) ON DELETE RESTRICT,
     CONSTRAINT `fk_auditorias_vacunas1` FOREIGN KEY (`vacunas_id`) REFERENCES `vacunas` (`id`) ON DELETE RESTRICT
@@ -46,9 +47,9 @@ CREATE UNIQUE INDEX `cedula_UNIQUE` ON `personas` (`cedula`);
 INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
 VALUES ('20210305194829_database_generating', '3.1.12');
 
-ALTER TABLE `auditorias` ADD `fecha_vacunacion` datetime(6) NOT NULL DEFAULT '2021-03-05 20:08:16.090922';
+ALTER TABLE `auditorias` ADD `fecha_vacunacion` datetime(6) NOT NULL DEFAULT '2021-03-23 11:49:49.576169';
 
-ALTER TABLE `auditorias` ADD `fecha_vacunaproxima` datetime(6) NOT NULL DEFAULT '2021-06-05 00:00:00';
+ALTER TABLE `auditorias` ADD `fecha_vacunaproxima` datetime(6) NOT NULL DEFAULT '2021-06-23 00:00:00';
 
 INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
 VALUES ('20210305222845_Add_columns_to_dates', '3.1.12');
@@ -64,3 +65,10 @@ VALUES (3, 6, 'AH1N1');
 
 INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
 VALUES ('20210305235934_seed_vacuna', '3.1.12');
+
+ALTER TABLE `provincias` ADD `latitude` double NOT NULL;
+
+ALTER TABLE `provincias` ADD `longitude` double NOT NULL;
+
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20210323151638_add_longitude_latitude', '3.1.12')

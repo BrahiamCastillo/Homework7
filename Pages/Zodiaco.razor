@@ -35,10 +35,10 @@ else
     List<Personas> People() => new vacunasContext(options).Personas.ToList();
 
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
 
-        await chargeTable();
+        chargeTable();
     }
 
     string zodiacSign(DateTime date)
@@ -112,7 +112,7 @@ else
 
     Dictionary<string, int> Zodiac = new Dictionary<string, int>();
 
-    async Task chargeTable()
+    void chargeTable()
     {
         int aries = 0;
         int tauro = 0;
@@ -202,6 +202,7 @@ else
         Zodiac.Add("Capricornio", capricornio);
         Zodiac.Add("Acuario", acuario);
         Zodiac.Add("Piscis", piscis);
+
     }
 
 }

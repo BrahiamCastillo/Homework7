@@ -62,11 +62,16 @@
     <MapsLayers>
         <MapsLayer ShapeData="MapShapeData" DataSource="provinces"
         ShapePropertyPath='@("name")' ShapeDataPath="NombreProvincia">
-        <MapsDataLabelSettings Visible="true" LabelPath="NombreProvincia">
+        <MapsDataLabelSettings Visible="true" LabelPath="NombreProvincia" IntersectionAction="IntersectAction.Trim">
         </MapsDataLabelSettings>
+         <MapsLayerTooltipSettings Visible="true"
+                              ValuePath="NombreProvincia"
+                              Format="<b>${NombreProvincia}</b><br>">
+        </MapsLayerTooltipSettings>
         <MapsShapeSettings Autofill="true"></MapsShapeSettings>
         <MapsMarkerSettings>
-            <MapsMarker Visible='true' DataSource='MarkerDataSource' ShapeValuePath="Triangle" ColorValuePath="blue">
+            <MapsMarker Visible='true' DataSource='MarkerDataSource' Height="20" Width="20" Fill="red" AnimationDuration="0" Shape="MarkerType.Balloon">
+                <MapsMarkerTooltipSettings Visible="true" ValuePath="name"></MapsMarkerTooltipSettings>
             </MapsMarker>
         </MapsMarkerSettings>
     </MapsLayer>
@@ -94,7 +99,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        provinces = new vacunasContext(options).Provincias.ToList();
+        provinces = await new vacunasContext(options).Provincias.ToListAsync();
     }
      public async void getSelectedValue() 
     { 
@@ -105,7 +110,9 @@
         VaccinesPeople = new vacunasContext(options).Auditorias.
         Where(w => w.VacunasId == val).OrderBy(o => o.PersonasId).ToList();
 
-        activate = true; 
+        activate = true;
+
+        chargeListMap(); 
     } 
 
     /// Mapa
@@ -133,8 +140,21 @@
 };
 
 /// Hace un foreach para cargar los datos desde vaccinePeople
-public List<MapMarkerDataSource> MarkerDataSource = new List<MapMarkerDataSource> {
-    new MapMarkerDataSource{ latitude= 19.20561, longitude= -69.33685, name= "Samana", color="red", shape="Triangle" }
-};
+public List<MapMarkerDataSource> MarkerDataSource = new List<MapMarkerDataSource>();
+
+void chargeListMap() {
+
+    foreach(var peop in VaccinesPeople) {
+
+        MarkerDataSource.Add(new MapMarkerDataSource{
+            latitude = peop.Provincias.Latitude,
+            longitude = peop.Provincias.Longitude,
+            name = peop.Personas.Nombre + " " + peop.Personas.Apellido,
+            color = "red",
+            shape="Triangle"
+        });
+    }
+
+}
 
 }

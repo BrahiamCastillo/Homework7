@@ -29,11 +29,10 @@ namespace Homework7.Models
         {
             modelBuilder.Entity<Auditorias>(entity =>
             {
-                entity.HasKey(e => new { e.PersonasId, e.VacunasId, e.ProvinciasId })
-                    .HasName("PRIMARY")
-                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0, 0 });
-
                 entity.ToTable("auditorias");
+
+                entity.HasIndex(e => e.PersonasId)
+                    .HasName("fk_auditorias_personas");
 
                 entity.HasIndex(e => e.ProvinciasId)
                     .HasName("fk_auditorias_provincias1_idx");
@@ -41,28 +40,32 @@ namespace Homework7.Models
                 entity.HasIndex(e => e.VacunasId)
                     .HasName("fk_auditorias_vacunas1_idx");
 
-                entity.Property(e => e.PersonasId)
-                    .HasColumnName("personas_id")
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.VacunasId)
-                    .HasColumnName("vacunas_id")
+                entity.Property(e => e.FechaVacunacion)
+                    .HasColumnName("fecha_vacunacion")
+                    .HasDefaultValueSql("'2021-03-23 11:46:18.731875'");
+
+                entity.Property(e => e.FechaVacunaproxima)
+                    .HasColumnName("fecha_vacunaproxima")
+                    .HasDefaultValueSql("'2021-06-23 00:00:00.000000'");
+
+                entity.Property(e => e.NumeroDosis)
+                    .HasColumnName("numero_dosis")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.PersonasId)
+                    .HasColumnName("personas_id")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.ProvinciasId)
                     .HasColumnName("provincias_id")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.FechaVacunacion)
-                    .HasColumnName("fecha_vacunacion")
-                    .HasDefaultValueSql("'2021-03-09 19:57:43.656962'");
-
-                entity.Property(e => e.FechaVacunaproxima)
-                    .HasColumnName("fecha_vacunaproxima")
-                    .HasDefaultValueSql("'2021-06-09 00:00:00.000000'");
-
-                entity.Property(e => e.NumeroDosis)
-                    .HasColumnName("numero_dosis")
+                entity.Property(e => e.VacunasId)
+                    .HasColumnName("vacunas_id")
                     .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Personas)
@@ -148,6 +151,10 @@ namespace Homework7.Models
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.Latitude).HasColumnName("latitude");
+
+                entity.Property(e => e.Longitude).HasColumnName("longitude");
 
                 entity.Property(e => e.NombreProvincia)
                     .IsRequired()

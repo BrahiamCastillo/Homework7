@@ -16,6 +16,8 @@ namespace Homework7.Models
 
         public int Id { get; set; }
         public string NombreProvincia { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         public virtual ICollection<Auditorias> Auditorias { get; set; }
     }
